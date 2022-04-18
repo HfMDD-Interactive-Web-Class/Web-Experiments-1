@@ -1,0 +1,28 @@
+body {
+    background-color: lawngreen;
+    font-family:sans-serif;
+}
+
+p {
+    background-color: tomato;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.main_text {
+top:10%;
+}
+
+.background_image {
+    position:fixed;
+    top:0px;
+}
+
+.first_paragraph {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+}
+
+#special {
+    background-color: yellow;
+}

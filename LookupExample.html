@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <div id="firstDiv" onclick="
+     console.log('You clicked me: ', this);
+     this.style.color='blue';   
+     ">
+        Hello
+    </div>
+
+    <div id="secondDiv" onclick="console.log('You clicked me too: ', this)">
+        Animals
+    </div>
+
+    <script>
+        console.log("I am in Javascript");
+
+        const a = 1; // constant variable; can't be changed
+
+        let b = 2; // this variable can be changed
+        let c = "I'm a string variable";
+        let cc = 'I\'m also a string variable'; // for string variables, both single and double quotes are allowed. 
+                                                // Use a backlash before an apostrophe within single quotes
+
+        let d = [1, 2, 3, "four", [45, 46, "seven"]]; // this is an array. mixed types are allowed, also arrays within arrays
+
+        let e; // uninitialized = undefined
+        var ee;
+
+/* 
+    Difference between var and let: The main difference is scoping rules. 
+    Variables declared by var keyword are scoped to the immediate function body while let variables are scoped 
+    to the immediate enclosing block denoted by { }. 
+*/
+
+        f = 8; // this is a global variable
+
+        let obj = { 
+            "key1": "key1_printme!", 
+            2: "key2",
+            key3: a,
+            key4: b
+        } // this is an object with key-value pairs. keys are always strings
+
+        console.log(a, b, c, cc, d, e, ee, f, obj, obj.key1, d[4], d[4][0]); // writing variables to the browser console (in developer tools)
+
+        let myDivs = document.querySelectorAll("div");
+
+        console.log(myDivs);
+
+        const sameObj = obj;    // despite using the const keyword, objects can be changed
+                                // obj and sameObj reference each other: change one, change the other
+
+        sameObj.newkey = 1; 
+        obj.key3 = c;
+
+        console.log(sameObj, obj);
+    </script>
+</body>
+
+</html>
