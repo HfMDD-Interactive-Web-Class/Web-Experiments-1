@@ -1,0 +1,105 @@
+About last week:
+
+#1 COMMENTS:
+
+How i do comments in HTML? 
+
+<!-- -->
+<! -- this line will be a comment and it is only for my documentation -->
+
+how i do comments in JavaScripts? 
+
+// 
+and 
+/*   */ 
+// that´s is really useful for comment one line
+
+/* in this form
+i can do more lines
+important is, that we have to close the comment */
+
+secuence caracter
+ /n = new line
+ /" = doble quote
+ // = backslash
+
+
+#2 ARRAYS: 
+array with 5 integer number
+let my_arr = [24,11,29,3,45]
+
+arrays can contain different types. for example integer and strings  
+let my_arr_two = [1,"hello", 3];
+
+arrays can contain maybe another or multiples arrays
+let arrays_with_another_array = ["hello", 1, [23, "anotherArray", 54]];
+ 
+the first posicion in an array is 0 !!
+let´s the my_arr. 
+my_arr[0]; -> the first position of my_array, the output? 24
+my_arr[4]; output 45
+my_arr[6]; out of range. Maybe will be give you a Error! 
+
+waht is about the array with another array?
+let´s take on time more this array. 
+let arrays_with_another_array = ["hello", 1, [23, "anotherArray", 54]];
+
+arrays_with_another_array[0]; //output "hello" 
+arrays_with_another_array[2][0]; //output 23 
+arrays_with_another_array[2][1]; //output "anotherArray" 
+
+
+#3 OBJETS:
+
+for object you have a key and a value. In different like array you can access to the value if you use the key. There is not postition here
+
+let d = [1, 2, 3, "four", [45, 46, "seven"]];
+
+let obj_2 = {
+      thing_1: 1,//key : value
+      anotherthing: d, //array as value
+
+- we created a object with the name obj_2
+- we created two keys thing_1 and anothering
+- thing_1 has the value 1
+- anotherthing has the value d, what is an array 
+
+obj_2.thing_1 will you return the value 1
+
+
+#4 CLASSES:
+
+think about: you have multiples <div> </div> marquee or another <marquee> 
+your CSS code look like:
+
+div 
+{
+  text-align: center;
+  color:brown;
+}
+whats happend? all the div will get this change. But wo can we do the change to a specific seccion? 
+Classes is a good option!
+
+HTML Code
+<div>
+<h1 class= "my_class"> Here ist the main Titel <br></h1>
+</div>
+
+CSS Code
+
+.my_class 
+{
+  text-align: center;
+  color:brown;
+}
+
+-In HTML Code we created a class with the name my_class. 
+-In CSS Code we call the class my_class. Don´t forget the dot before the name of the class
+
+
+ 
+
+
+
+
+

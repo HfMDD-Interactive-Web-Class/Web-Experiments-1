@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+  <div>
+
+    Hello
+  </div>
+
+  <div id="secondDiv" onclick="console.log('You clicked me too: ', this)">
+    Animals
+  </div>
+
+  <script> // here begin Javascript Code
+
+    console.log("I am in Javascript");
+
+    const a = 1; // constant variable; can't be changed
+
+    let b = 2; // this variable can be changed
+    let c = "I'm a string variable";
+    let cc = 'I\'m also a string variable'; // for string variables, both single and double quotes are allowed. 
+    // Use a backlash before an apostrophe within single quotes. 
+    let a_new_variable = "Whatever\" a word";
+    console.log(a_new_variable)
+
+
+
+    let d = [1, 2, 3, "four", [45, 46, "seven"]]; // this is an array. mixed types are allowed, also arrays within arrays
+    console.log(d.length) // return length of array
+    //Array: acces to the different position  / values
+    //d[0] output 1
+    //d[2] output 3
+    //d[4][1] output 46
+
+
+    let obj_2 = {
+      thing_1: 1,//key : value
+      anotherthing: d, //array as value
+    } // a second object
+
+    //console.log(a, b, c, cc, d, e, ee, f, obj, obj.key1, d[4], d[4][0]); // writing variables to the browser console (in developer tools)
+    //console.log(obj_2.thing_1, Object.keys(obj_2), d[1])
+
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
+
+
+    let myDivs = document.querySelectorAll("div");
+    let words = ["The", "first", "loop", "in", "JavaScript", "Banana", "ist", "not", "Trompet"]
+
+    let str = ""
+    for (let i = 0; i < 100; i++) {
+      let random = getRandomInt(words.length - 1)
+      let word = words[random]
+      str = str + word + " "
+    }
+    myDivs[0].innerHTML = str
+
+
+    console.log(myDivs);
+    for (let increment = 0; increment < myDivs.length; increment++) {
+      myDivs[increment].style.color = "purple"
+      console.log(myDivs[increment])
+    }
+
+
+    /*
+                      const sameObj = obj;    // despite using the const keyword, objects can be changed
+                      // obj and sameObj reference each other: change one, change the other
+                  
+                      sameObj.newkey = 1;
+                      obj.key3 = c;
+                  
+                      console.log(sameObj, obj);*/
+  </script>
+</body>
+
+</html>

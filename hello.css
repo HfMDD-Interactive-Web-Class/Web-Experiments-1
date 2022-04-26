@@ -4,7 +4,7 @@ body {
 }
 
 p {
-    background-color: tomato;
+    /*background-color: ;*/
     margin-left: 10%;
     margin-right: 10%;
 }
@@ -25,4 +25,8 @@ top:10%;
 
 #special {
     background-color: yellow;
+}
+
+.red_text {
+  color: red;
 }
