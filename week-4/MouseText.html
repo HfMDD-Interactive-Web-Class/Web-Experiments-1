@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #maindiv {
+                pointer-events: none;
+            }
+            body {
+                height:100vh;
+            }
+            .mousetext {
+                position: absolute;
+                pointer-events: none;
+            }
+        </style>
+    </head>
+    <body>
+       <div id = "maindiv"></div>
+
+       <script>
+           function myfirstfunction(x) {
+               return x+1;
+           }
+           let result = myfirstfunction(110);
+           console.log(result);
+
+           let ourdiv = document.querySelector("#maindiv")
+
+           function getRandomInt(max) {
+            return Math.round(Math.random() * max);
+           }
+           //try to make an array with [,] -1 don't forget probably 4 loop
+
+           function mouseHandler(e) {
+                //console.log(e);
+                ourdiv.innerHTML = e.clientX +" " + e.clientY +" " + e.buttons
+
+                if(e.buttons==1){
+                    let newdiv = document.createElement("div");
+                    newdiv.classList.add("mousetext")
+                    newdiv.style.left = e.clientX + "px"
+                    newdiv.style.top = e.clientY + "px"
+                    newdiv.innerHTML = "Je"
+                    document.body.appendChild(newdiv)
+                }
+            }
+            
+
+            document.body.addEventListener("mousemove", mouseHandler);
+
+            
+
+        
+
+       </script>
+    </body>
+</html>

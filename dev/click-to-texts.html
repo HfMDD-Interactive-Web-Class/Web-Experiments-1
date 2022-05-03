@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+    #main-div {
+        height: 100vh;
+    }
+
+    .mouseText {
+        position: absolute;
+        pointer-events: none;
+    }
+
+</style>
+
+</head>
+
+<body>
+
+    <div id="main-div"></div>
+
+    <script>
+
+        let div = document.querySelector("#main-div");
+        
+        /*
+        document.body.addEventListener("click", (event) => {
+            let newText = document.createElement("div");
+            newText.style.top = event.clientY + "px";
+            newText.style.left = event.clientX + "px";
+            newText.innerHTML = "yo!";
+            newText.classList.add("mouseText");
+            div.appendChild(newText);
+
+        })
+        */
+       
+        document.body.addEventListener("mousemove", (event) => {
+            if( event.buttons == 1 )
+            {
+                let newText = document.createElement("div");
+                newText.style.top = event.clientY + "px"; // note that we need the "px" here or else it won't work!
+                newText.style.left = event.clientX + "px";
+                newText.innerHTML = "yo!";
+
+                newText.classList.add("mouseText");
+
+                // these also do the same thing, but better to use classList.add for cases where you might have multiple classes
+//                newText.setAttribute("class", "mouseText"); 
+//                newText.class = "mouseText";
+
+                div.appendChild(newText);
+            }
+
+
+        })
+
+
+    </script>
+
+</body>
+</html>
