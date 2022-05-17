@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            svg {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                
+                width: 100vw;
+                height: 100vh;
+            }
+        </style>
+    </head>
+    <body>
+        <svg>
+            <!-- <circle cx="200" cy="200" r="20"></circle> -->
+        </svg>
+        <script>
+            const svgElement = document.querySelector("svg");
+            const NS = "http://www.w3.org/2000/svg";
+
+            let radius = 10;
+            
+            function mouseHandler(event) {
+                let newCircle = document.createElementNS(NS, "circle");
+                newCircle.setAttributeNS(null, "cx", event.clientX);
+                newCircle.setAttributeNS(null, "cy", event.clientY);
+                newCircle.setAttributeNS(null, "r", radius);
+                newCircle.setAttributeNS(null, "data-initialR", radius);
+
+                const r = Math.random() * 255;
+                const g = Math.random() * 255;
+                const b = Math.random() * 255;
+
+                newCircle.setAttributeNS(null, "fill", `rgba(${r}, ${g}, ${b}, 0.5)`);
+
+                svgElement.appendChild(newCircle);
+
+                radius += 5;
+            }
+
+            document.body.addEventListener("mousedown", mouseHandler);
+
+            let prevX = 0;
+            let prevY = 0;
+            
+            document.body.addEventListener("mousemove", (event) => {
+                let deltaX = event.clientX - prevX;
+                let deltaY = event.clientY - prevY;
+
+                prevX = event.clientX;
+                prevY = event.clientY;
+
+                let distance = Math.sqrt((deltaX * deltaX) + (deltaY * deltaY));
+                console.log(distance);
+
+                let allCircles = document.querySelectorAll("circle");
+
+                allCircles.forEach((c) => {
+                    let initialR = c.getAttributeNS(null, "data-initialR");
+                    c.setAttributeNS(null, "r", distance + Number(initialR));
+                })
+            })
+        </script>
+    </body>
+</html>
