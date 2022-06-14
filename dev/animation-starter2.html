@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            svg {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                
+                width: 100vw;
+                height: 100vh;
+            }
+
+            body {
+                background-color: gray;
+            }
+
+        </style>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+
+    </head>
+    <body>
+        <svg>
+            <circle id="clickCircle" cx="200" cy="200" r="5"></circle>
+        </svg>
+
+        <script>
+
+            gsap.registerPlugin({
+                name: "precise",
+                init(target, vars, tween, index, targets) {
+                    let data = this,
+                        p, value;
+                    data.t = target;
+                    for (p in vars) {
+                        value = vars[p];
+                        typeof(value) === "function" && (value = value.call(tween, index, target, targets));
+                        data.pt = {n: data.pt, p: p, s: target[p], c: value - target[p]};
+                        data._props.push(p);
+                    }
+                },
+                render(ratio, data) {
+                    let pt = data.pt;
+                    while (pt) {
+                        data.t[pt.p] = pt.s + pt.c * ratio;
+                        pt = pt.n;
+                    }
+                }
+            });
+
+            const svgElement = document.querySelector("svg");
+            const NS = "http://www.w3.org/2000/svg";
+
+            const circle = document.getElementById("clickCircle");
+            
+            const circle_r = 20;
+            const point_r = 5;
+            const point_d = circle_r + (point_r * 2);
+
+            const nPoints = 12;
+
+            const a2r = Math.PI / 180.;
+
+            function onClick(event) {
+
+
+                let group = document.createElementNS(NS, "g");
+                group.id = "groupie";
+
+                svgElement.appendChild(group);
+
+                let gsap_timeline = gsap.timeline();
+
+                for( let i = 0; i < nPoints; i++)
+                {
+                    let c = document.createElementNS(NS, "circle");
+                    c.classList.add("miniCircles");
+
+                    c.setAttributeNS(null, "cx", 200);
+                    c.setAttributeNS(null, "cy", 200);
+                    c.setAttributeNS(null, "r", 5);
+                    c.setAttributeNS(null, "fill", "black");
+
+                    group.appendChild(c);
+
+                    let angle = i * (360. / nPoints);
+                    let radians = angle * a2r;
+
+                    gsap_timeline.to(c, 
+                    { 
+                        x: point_d * Math.cos( radians ),
+                        y: point_d * Math.sin( radians ),
+//                        fill: "blue",
+                        r: 10,
+                        duration: 1
+                    }, 0)
+   
+                }
+
+                gsap_timeline.to("#groupie",
+                {
+                    rotation: -360.,
+                    transformOrigin: "50% 50%",
+                    duration: 5,
+                })
+
+                gsap_timeline.to(".miniCircles",
+                {
+                    fill: "pink",
+                    duration: 5,
+                    r: 5
+                }, "<" )
+
+
+                gsap_timeline.to("#clickCircle",
+                {
+                    fill: "pink", // note that this is an inline style, which overrides the display attribute
+                    duration: 5,
+                    precise: {
+                        value: 0.00009,
+                    },
+                    r: 20.0
+                }, "<" )
+
+                /*
+                x = r × cos( θ )
+                y = r × sin( θ )
+
+                radians = degrees × π / 180°
+
+                */
+
+            }
+
+            circle.addEventListener("mousedown", onClick);
+
+            circle.addEventListener("mouseover", () => {
+                circle.setAttributeNS(null, "fill", "red")
+            })
+            
+            circle.addEventListener("mouseleave", () => {
+                circle.setAttributeNS(null, "fill", "black")
+            })
+
+
+        </script>
+    </body>
+</html>

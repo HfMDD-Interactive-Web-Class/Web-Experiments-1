@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            svg {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                
+                width: 100vw;
+                height: 100vh;
+            }
+        </style>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+
+    </head>
+    <body>
+        <svg>
+            <circle id="clickCircle" cx="200" cy="200" r="20"></circle>
+        </svg>
+
+        <script>
+            const svgElement = document.querySelector("svg");
+            const NS = "http://www.w3.org/2000/svg";
+
+            const circle = document.getElementById("clickCircle");
+            
+            function onClick(event) {
+                gsap.to("#clickCircle", { 
+                    x: 400,
+                    duration: 1,
+                    yoyo: true,
+                    repeat: 1
+                })
+            }
+
+            circle.addEventListener("mousedown", onClick);
+
+            circle.addEventListener("mouseover", () => {
+                circle.setAttributeNS(null, "fill", "red")
+            })
+            
+            circle.addEventListener("mouseleave", () => {
+                circle.setAttributeNS(null, "fill", "black")
+            })
+
+
+        </script>
+    </body>
+</html>

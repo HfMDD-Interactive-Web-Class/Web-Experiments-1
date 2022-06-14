@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <svg width="100vw" height="100vh" >
+            <circle cx="100" cy="100" r="20" fill="red"></circle>
+        </svg>
+
+       <script>
+          
+            let svgElement = document.querySelector("svg");
+            let xmlns = "http://www.w3.org/2000/svg";
+
+            // xmlns required for createElement, but not for setAttributeNS
+            let newSVG_shape = document.createElementNS(xmlns, "circle");
+
+            newSVG_shape.setAttribute("cx", 500);
+            newSVG_shape.setAttributeNS(null, "cy", 500);
+            newSVG_shape.setAttributeNS(null, "r", 20);
+            newSVG_shape.setAttributeNS(null, "fill", "red");
+
+
+            svgElement.appendChild(newSVG_shape);        
+
+       </script>
+    </body>
+</html>
